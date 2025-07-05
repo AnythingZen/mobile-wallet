@@ -1,11 +1,13 @@
 import express from "express";
-import dotenv, { configDotenv } from "dotenv";
+import dotenv from "dotenv";
 import { sql } from "./config/db.js";
 import rateLimiter from "./middleware/rateLimiter.js";
 import transactionsRoute from "./routes/transactionsRoute.js";
+import cors from "cors";
 
 dotenv.config();
 const app = express();
+app.use(cors());
 
 // Middleware
 app.use(express.json()); // to parse into json from bit streams
